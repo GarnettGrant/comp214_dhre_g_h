@@ -8,72 +8,78 @@
 {% block content %}
   {% include 'nav.html' %}
 
-  <div class="container align-items-center mt-5 w-50">
-    <div class="col-md-12 text-center d-flex justify-content-center align-items-center mt-5">
-      <h1>Hire Staff</h1>
-    </div>
-    <div class="col-md-12">
-      <form action="{% url 'hire_staff' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="staffno">Staff No.</label>
-            <input type="text" class="form-control" id="staffno" name="staffno" placeholder="Staff Number" />
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card mb-5">
+          <div class="card-header text-center">
+            <h2>Hire Staff</h2>
           </div>
-        
-        <div class="form-group">
-          <label for="fname">First Name</label>
-          <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" />
-        </div>
+          <div class="card-body">
+            <form action="{% url 'hire_staff' %}" method="post">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="staffno">Staff No.</label>
+                <input type="text" class="form-control" id="staffno" name="staffno" placeholder="Staff Number" />
+              </div>
 
-        <div class="form-group">
-          <label for="lname">Last Name</label>
-          <input type="text" class="form-control" id="lname" name="lname" placeholder="First Name" />
-        </div>
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" />
+              </div>
 
-        <div class="form-group">
-          <label for="position">Position</label>
-          <input type="text" class="form-control" id="position" name="position" placeholder="Position" />
-        </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" class="form-control" id="lname" name="lname" placeholder="First Name" />
+              </div>
 
-        <div class="form-group">
-            <label for="sex">Sex</label>
-            <input type="text" class="form-control" id="sex" name="sex" placeholder="Sex" />
+              <div class="form-group">
+                <label for="position">Position</label>
+                <input type="text" class="form-control" id="position" name="position" placeholder="Position" />
+              </div>
+
+              <div class="form-group">
+                <label for="sex">Sex</label>
+                <input type="text" class="form-control" id="sex" name="sex" placeholder="Sex" />
+              </div>
+
+              <div class="form-group">
+                <label for="dob">DOB:</label>
+                <input type="date" class="form-control" id="dob" name="dob" placeholder="Date of Birth" />
+              </div>
+
+              <div class="form-group">
+                <label for="lname">Salary:</label>
+                <input type="number" class="form-control" id="salary" name="salary" placeholder="Salary" />
+              </div>
+
+              <div class="form-group">
+                <label for="branchno">Branch No.</label>
+                <input type="text" class="form-control" id="branchno" name="branchno" placeholder="Branch Number" />
+              </div>
+
+              <div class="form-group">
+                <label for="telno">Telephone:</label>
+                <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="Telephone Number" />
+              </div>
+
+              <div class="form-group">
+                <label for="mobile">Mobile:</label>
+                <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" />
+              </div>
+              <div class="text-center d-flex justify-content-center align-items-center mt-5 mb-5">
+                <button type="button" class="btn btn-danger mx-2 px-5">Cancel</button>
+                <button type="submit" class="btn btn-primary mx-2 px-5">Hire</button>
+              </div>
+            </form>
           </div>
-
-        <div class="form-group">
-          <label for="dob">DOB:</label>
-          <input type="date" class="form-control" id="dob" name="dob" placeholder="Date of Birth" />
         </div>
-
-        <div class="form-group">
-          <label for="lname">Salary:</label>
-          <input type="number" class="form-control" id="salary" name="salary" placeholder="Salary" />
-        </div>
-
-        <div class="form-group">
-            <label for="branchno">Branch No.</label>
-            <input type="text" class="form-control" id="branchno" name="branchno" placeholder="Branch Number" />
-          </div>
-
-        <div class="form-group">
-          <label for="telno">Telephone:</label>
-          <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="Telephone Number" />
-        </div>
-
-        <div class="form-group">
-          <label for="mobile">Mobile:</label>
-          <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" />
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" />
-        </div>
-        <div class="text-center d-flex justify-content-center align-items-center mt-5 mb-5">
-            <button type="button" class="btn btn-danger mx-2 px-5">Cancel</button>
-            <button type="submit" class="btn btn-primary mx-2 px-5">Hire</button>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
 {% endblock %}
