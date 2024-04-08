@@ -56,6 +56,8 @@ class Client(models.Model):
         with connection.cursor() as cursor:
             cursor.callproc('register_client_sp', [clientno, fname, lname, telno, street, city, email, preftype, maxrent])
 
+    def update_client(self, clientno, fname, lname, telno, street, city, email, preftype, maxrent):
+        with connection.cursor() as cursor:
+            cursor.callproc('update_client_sp', [clientno, fname, lname, telno, street, city, email, preftype, maxrent])   
     class Meta:
         db_table = 'DH_CLIENT'
-

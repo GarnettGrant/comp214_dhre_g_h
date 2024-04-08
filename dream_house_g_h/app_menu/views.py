@@ -89,3 +89,21 @@ def update_staff(request):
         staff.update_staff(staffno, salary, telephone, mobile, email)
     
         return HttpResponse("Staff updated successfully")
+
+def update_client(request):
+    print(request.POST)
+    if request.method == 'POST':
+        clientno = request.POST['clientno']
+        fname = request.POST['fname']
+        lname = request.POST['lname']
+        telno = request.POST['telno']
+        street = request.POST['street']
+        city = request.POST['city']
+        email = request.POST['email']
+        preftype = request.POST['preftype']
+        maxrent = request.POST['maxrent']
+
+        client = Client()
+        client.update_client(clientno, fname, lname, telno, street, city, email, preftype, maxrent)
+    
+        return HttpResponse("Client updated successfully")
