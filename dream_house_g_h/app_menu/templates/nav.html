@@ -41,7 +41,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% comment %} Client Registration Form {% endcomment %}
-                    <li><a class="dropdown-item" href="#">Register Client</a></li>
+                    <li><a class="dropdown-item" href="{% url 'register_client'%}">Register Client</a></li>
                     <li><hr class="dropdown-divider"></li>
                     {% comment %} List/Update Client Form {% endcomment %}
                     <li><a class="dropdown-item" href="{% url 'list_clients'%}">List/Update Client</a></li>

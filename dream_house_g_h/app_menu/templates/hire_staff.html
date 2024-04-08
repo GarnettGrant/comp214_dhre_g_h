@@ -13,8 +13,13 @@
       <h1>Hire Staff</h1>
     </div>
     <div class="col-md-12">
-      <form action="/hire" method="post">
+      <form action="{% url 'hire_staff' %}" method="post">
         {% csrf_token %}
+        <div class="form-group">
+            <label for="staffno">Staff No.</label>
+            <input type="text" class="form-control" id="staffno" name="staffno" placeholder="Staff Number" />
+          </div>
+        
         <div class="form-group">
           <label for="fname">First Name</label>
           <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" />
@@ -31,13 +36,13 @@
         </div>
 
         <div class="form-group">
-          <label for="branchno">Branch No:</label>
-          <input type="number" class="form-control" id="branchno" name="branchno" placeholder="Branch Number" />
-        </div>
+            <label for="sex">Sex</label>
+            <input type="text" class="form-control" id="sex" name="sex" placeholder="Sex" />
+          </div>
 
         <div class="form-group">
           <label for="dob">DOB:</label>
-          <input type="datetime" class="form-control" id="dob" name="dob" placeholder="Date of Birth" />
+          <input type="date" class="form-control" id="dob" name="dob" placeholder="Date of Birth" />
         </div>
 
         <div class="form-group">
@@ -46,8 +51,13 @@
         </div>
 
         <div class="form-group">
+            <label for="branchno">Branch No.</label>
+            <input type="text" class="form-control" id="branchno" name="branchno" placeholder="Branch Number" />
+          </div>
+
+        <div class="form-group">
           <label for="telno">Telephone:</label>
-          <input type="tel" class="form-control" id="telno" name="telno" placeholder="Telephone Number" />
+          <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="Telephone Number" />
         </div>
 
         <div class="form-group">

@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'dream_house_g_h.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'USER': 'COMP214_W24_ers_5',
+        'USER': 'COMP214_W24_ers_6',
         'PASSWORD':'password',
         'HOST':'199.212.26.208',
         'PORT':'1521',

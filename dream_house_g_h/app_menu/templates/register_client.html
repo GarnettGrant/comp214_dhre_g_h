@@ -1,0 +1,73 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+  Branch List
+{% endblock %}
+
+{% block content %}
+  {% include 'nav.html' %}
+
+  <div class="container align-items-center mt-5 w-50">
+    <div class="col-md-12 text-center d-flex justify-content-center align-items-center mt-5">
+      <h1>Register Client</h1>
+    </div>
+    <div class="col-md-12">
+      <form action="{% url 'register_client' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="clientno">Client No.</label>
+            <input type="text" class="form-control" id="clientno" name="clientno" placeholder="Client Number" />
+          </div>
+        
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" />
+        </div>
+
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" class="form-control" id="lname" name="lname" placeholder="First Name" />
+        </div>
+
+        <div class="form-group">
+          <label for="telno">Telephone:</label>
+          <input type="text" class="form-control" id="telno" name="telno" placeholder="Telephone Number" />
+        </div>
+
+        <div class="form-group">
+          <label for="street">STREET:</label>
+          <input type="text" class="form-control" id="street" name="street" placeholder="Street Name" />
+        </div>
+
+        <div class="form-group">
+          <label for="city">CITY:</label>
+          <input type="text" class="form-control" id="city" name="city" placeholder="City Name" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" />
+        </div>
+
+        <div class="form-group">
+          <label for="preftype">Preferred Type of Home:</label>
+          <select class="form-control" id="preftype" name="preftype">
+            <option value="flat">Flat</option>
+            <option value="house">House</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="maxrent">Max Rent:</label>
+          <input type="number" class="form-control" id="maxrent" name="maxrent" placeholder="Enter max rent" />
+        </div>
+
+        <div class="text-center d-flex justify-content-center align-items-center mt-5 mb-5">
+            <button type="button" class="btn btn-danger mx-2 px-5">Cancel</button>
+            <button type="submit" class="btn btn-primary mx-2 px-5">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
