@@ -29,10 +29,13 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% comment %} Identify Branch Address Form {% endcomment %}
-                    <li><a class="dropdown-item" href="#">Look Up Branch Address</a></li>
+                    <li><a class="dropdown-item" href="{% url 'find_branch'%}">Look Up Branch Address</a></li>
                     <li><hr class="dropdown-divider"></li>
                     {% comment %} List/Update Branch Address Form {% endcomment %}
                     <li><a class="dropdown-item" href="{% url 'list_branch'%}">List/Update Branch Address</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    {% comment %} List/Update Branch Address Form {% endcomment %}
+                    <li><a class="dropdown-item" href="{% url 'open_branch'%}">Open Branch</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown">

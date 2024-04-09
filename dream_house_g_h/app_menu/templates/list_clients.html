@@ -8,11 +8,18 @@
 {% block content %}
   {% include 'nav.html' %}
 
+  <style>
+    input{
+      width: 150px;
+    }
+  </style>
+  
   <div class="container text-center d-flex justify-content-center align-items-center mt-5">
     <div class="row">
       <div class="col-md-12">
         <h1>Client List</h1>
-        <table class="table table-bordered table-responsive table-striped mt-5">
+        <div class="table-responsive">
+        <table class="table table-bordered table-striped mt-5">
           <thead>
             <tr>
               <th>Client No.</th>
@@ -55,6 +62,7 @@
             {% endfor %}
           </tbody>
         </table>
+      </div>
       </div>
     </div>
   </div>

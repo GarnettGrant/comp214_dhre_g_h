@@ -27,6 +27,7 @@
             <th>Telephone</th>
             <th>Mobile</th>
             <th>Email</th>
+            <th>Action</th>
           </tr>
 
           {% for staff in staffs %}
@@ -44,12 +45,14 @@
                 <td><input type="text" name="telephone" value="{{ staff.telephone }}" /></td>
                 <td><input type="text" name="mobile" value="{{ staff.mobile }}" /></td>
                 <td><input type="email" name="email" value="{{ staff.email }}" /></td>
-                <td><button type="submit">Save</button></td>
+                <td><button class="btn btn-primary" type="submit">Save</button></td>
                 <input type="hidden" name="staffno" value="{{ staff.staffno }}" />
             </tr>
         </form>
           {% endfor %}
+         
         </table>
+        
       </div>
     </div>
   </div>

@@ -34,6 +34,18 @@ def list_clients(request):
     }
     return HttpResponse(template.render(context, request))
 
+def find_branch(request):
+    template = loader.get_template('find_branch.html')
+    if request.method == 'POST':
+        branch_class = Branch()
+        branchno = request.POST['branchno']
+        branch = branch_class.search_branch(branchno)
+        context = {
+            'branch': branch
+        }
+        return HttpResponse(template.render(context, request))
+    return render(request, 'find_branch.html')
+
 ##def hire_staff(request):
   ##  template = loader.get_template('hire_staff.html')
     ##return HttpResponse(template.render())
@@ -78,6 +90,7 @@ def register_client(request):
 
 def update_staff(request):
     print(request.POST)
+    staffs = Staff.objects.all().values()
     if request.method == 'POST':
         staffno = request.POST['staffno']
         salary = request.POST['salary']
@@ -86,9 +99,12 @@ def update_staff(request):
         email = request.POST['email']
 
         staff = Staff()
-        staff.update_staff(staffno, salary, telephone, mobile, email)
+        updated_sucessfully = staff.update_staff(staffno, salary, telephone, mobile, email)
+        if updated_sucessfully:
+            staffs = Staff.objects.all().values()
     
-        return HttpResponse("Staff updated successfully")
+        return render(request, 'list_staff.html', {'staffs':staffs,'update_success': updated_sucessfully})
+    return redirect('list_staff')
 
 def update_client(request):
     print(request.POST)
@@ -104,6 +120,42 @@ def update_client(request):
         maxrent = request.POST['maxrent']
 
         client = Client()
-        client.update_client(clientno, fname, lname, telno, street, city, email, preftype, maxrent)
+        update_success = client.update_client(clientno, fname, lname, telno, street, city, email, preftype, maxrent)
+        if update_success:
+            clients = Client.objects.all().values()
     
-        return HttpResponse("Client updated successfully")
+        return render(request, 'list_clients.html', {'clients':clients,'update_success': update_success})
+    return redirect('list_clients')
+    
+def update_branch(request):
+    branches = Branch.objects.all().values()
+    if request.method == 'POST':
+        branchno = request.POST['branchno']
+        street = request.POST['street']
+        city = request.POST['city']
+        postcode = request.POST['postalcode']
+
+        branch = Branch()
+        update_success = branch.update_branch(branchno, street, city, postcode)
+        
+        if update_success:
+            branches = Branch.objects.all().values()
+        return render(request, 'list_branch.html', {'branches': branches, 'update_success': update_success})
+    
+    return redirect('list_branch')
+
+def open_branch(request):
+    branches = Branch.objects.all().values()
+    if request.method == 'POST':
+        branchno = request.POST['branchno']
+        street = request.POST['street']
+        city = request.POST['city']
+        postcode = request.POST['postalcode']
+
+        branch = Branch()
+        create_success = branch.open_branch(branchno, street, city, postcode)
+        if create_success:
+            branches = Branch.objects.all().values()
+        return render(request, 'open_branch.html', {'branches':branches, 'create_success': create_success})
+    
+    return render(request, 'open_branch.html')

@@ -1,0 +1,46 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+  Branch Look Up
+{% endblock %}
+
+{% block content %}
+{% include 'nav.html' %}
+  <div class="container text-center d-flex justify-content-center align-items-center mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Lookup Address</h1>
+        <form action="{% url 'find_branch' %}" method="POST">
+          {% csrf_token %}
+          <table class="table table-bordered table-striped mt-5">
+            <thead>
+              <tr>
+                <th>Branch No.</th>
+                <th>Street</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="text" name="branchno" id="branchno" placeholder="Branch No."></td>
+           
+                <td>
+                  <button type="submit" class="btn btn-primary">Search</button>
+                  
+                </td>
+              </tr>
+              <td colspan="2">
+                {% if branch %}
+                    <p class='mt-2'>
+                        {{ branch }}
+                    </p>
+                {% endif %}
+                {{if }}
+              </td>
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
