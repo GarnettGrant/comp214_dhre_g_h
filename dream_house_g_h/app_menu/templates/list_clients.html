@@ -18,6 +18,20 @@
     <div class="row">
       <div class="col-md-12">
         <h1>Client List</h1>
+      </div>
+      <div>
+        {% if update_success %}
+        <p id="success-message" class='card bg-success font-weight-bold text-white'>
+           Client Updated Successfully!
+       </p>
+       <script>
+         setTimeout(function() {
+           var element = document.getElementById('success-message');
+           element.style.display = 'none';
+         }, 3000);
+       </script>
+     {% endif %}  
+      </div>
         <div class="table-responsive">
         <table class="table table-bordered table-striped mt-5">
           <thead>

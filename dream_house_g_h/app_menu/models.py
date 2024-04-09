@@ -42,7 +42,7 @@ class Branch(models.Model):
         with connection.cursor() as cursor:
             cursor.execute(f"SELECT street || ', ' || city FROM DH_BRANCH WHERE branchno = '{branchno}';")
             result = cursor.fetchone()
-            return f'Branch Address: {result[0]}' if result else 'Sorry, no branch found with that number. Please Try again'
+            return (True, result, branchno)
         
     def update_branch(self, branchno, street, city, postalcode):
         with connection.cursor() as cursor:
@@ -50,7 +50,7 @@ class Branch(models.Model):
             return True 
     def open_branch(self, branchno, street, city, postalcode):
         with connection.cursor() as cursor:
-            cursor.callproc('open_branch_sp', [branchno, street, city, postalcode])
+            cursor.callproc('new_branch', [branchno, street, city, postalcode])
             return True
     class Meta:
         db_table = 'DH_BRANCH'

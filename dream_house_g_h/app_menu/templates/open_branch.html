@@ -13,6 +13,19 @@
       <div class="col-md-12">
         <h1>Open Branch</h1>
       </div>
+      <div>
+        {% if create_success %}
+        <p id="success-message" class='card bg-success font-weight-bold text-white'>
+           Branch Opened Successfully!
+       </p>
+       <script>
+         setTimeout(function() {
+           var element = document.getElementById('success-message');
+           element.style.display = 'none';
+         }, 3000);
+       </script>
+     {% endif %}  
+      </div>
       <div class="col-md-12">
         <table class=" d-flex justify-content-center align-items-center mt-5 table table-bordered table-responsive table-striped">
           <tr>
@@ -30,18 +43,15 @@
               <td><input type="text" name="city" id="city" ></td>
               <td><input type="text" name="postalcode" id="postalcode"></td>  
               <td>
-                <input type="hidden" name="branchno">
                 <button class="btn btn-primary" type="submit">Save</button>
               </td>
             </tr>
           </form>
-
-        
-        <tr>
+        {% comment %} <tr>
           <td colspan="5">
-            {% if update_success %}
+            {% if create_success %}
                <p id="success-message" class='mt-2'>
-                  Updated Successfully!
+                  Created Successfully!
               </p>
               <script>
                 setTimeout(function() {
@@ -52,7 +62,7 @@
             {% endif %}  
           </td>
           
-        </tr>
+        </tr> {% endcomment %}
         </table>
       </div>
     </div>

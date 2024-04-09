@@ -11,6 +11,20 @@
     <div class="row">
       <div class="col-md-12">
         <h1>Lookup Address</h1>
+        <div class="col-md-12">
+          {% if branch_found %}
+          <p id="success-message" class='card bg-success font-weight-bold text-white'>
+             Branch Search Complete!
+         </p>
+         
+         <script>
+           setTimeout(function() {
+             var element = document.getElementById('success-message');
+             element.style.display = 'none';
+           }, 3000);
+         </script>
+       {% endif %}  
+        </div>
         <form action="{% url 'find_branch' %}" method="POST">
           {% csrf_token %}
           <table class="table table-bordered table-striped mt-5">

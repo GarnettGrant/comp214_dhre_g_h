@@ -12,6 +12,19 @@
     <div class="col-md-12 text-center d-flex justify-content-center align-items-center mt-5">
       <h1>Register Client</h1>
     </div>
+    <div>
+      {% if register_success %}
+      <p id="success-message" class='card bg-success font-weight-bold text-white'>
+         Client Registered Successfully!
+     </p>
+     <script>
+       setTimeout(function() {
+         var element = document.getElementById('success-message');
+         element.style.display = 'none';
+       }, 3000);
+     </script>
+   {% endif %}  
+    </div>
     <div class="col-md-12">
       <form action="{% url 'register_client' %}" method="post">
         {% csrf_token %}

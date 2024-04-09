@@ -41,8 +41,11 @@ def find_branch(request):
         branchno = request.POST['branchno']
         branch = branch_class.search_branch(branchno)
         context = {
-            'branch': branch
+            'branch': f'Branch {branch[2]} Address: {branch[1][0]}' if branch[1] != None else 'Branch not found',
+            'branch_found': f'{branch[0]}'
         }
+        if branch[0]:
+            return render(request, 'find_branch.html', context)
         return HttpResponse(template.render(context, request))
     return render(request, 'find_branch.html')
 
@@ -66,8 +69,10 @@ def hire_staff(request):
         email = request.POST['email']
 
         staff = Staff()
-        staff.hire_staff(staffno, fname, lname, position,sex, dob, salary, branchno, telephone, mobile, email)
-        return render(request, 'hire_staff.html')
+        hire_success = staff.hire_staff(staffno, fname, lname, position,sex, dob, salary, branchno, telephone, mobile, email)
+        if hire_success:
+            staffs = Staff.objects.all().values()
+        return render(request, 'hire_staff.html', {'staffs':staffs, 'hire_success': hire_success})
     return render(request, 'hire_staff.html')
 
 def register_client(request):
@@ -84,8 +89,10 @@ def register_client(request):
         maxrent = request.POST['maxrent']
 
         client = Client()
-        client.register_client(clientno, fname, lname, telno, street, city, email, preftype, maxrent)
-        return render(request, 'register_client.html')
+        register_success = client.register_client(clientno, fname, lname, telno, street, city, email, preftype, maxrent)
+        if register_success:
+            clients = Client.objects.all().values()
+        return render(request, 'register_client.html', {'clients':clients, 'register_success': register_success})
     return render(request, 'register_client.html')
 
 def update_staff(request):

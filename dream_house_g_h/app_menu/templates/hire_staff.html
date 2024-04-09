@@ -12,6 +12,19 @@
     <div class="col-md-12 text-center d-flex justify-content-center align-items-center mt-5">
       <h1>Hire Staff</h1>
     </div>
+    <div>
+      {% if hire_success %}
+      <p id="success-message" class='card bg-success font-weight-bold text-white'>
+         Staff Hired Successfully!
+     </p>
+     <script>
+       setTimeout(function() {
+         var element = document.getElementById('success-message');
+         element.style.display = 'none';
+       }, 3000);
+     </script>
+   {% endif %}  
+    </div>
     <div class="col-md-12">
       <form action="{% url 'hire_staff' %}" method="post">
         {% csrf_token %}
@@ -74,6 +87,7 @@
             <button type="submit" class="btn btn-primary mx-2 px-5">Hire</button>
         </div>
       </form>
+      
     </div>
   </div>
 {% endblock %}

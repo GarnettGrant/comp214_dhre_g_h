@@ -12,6 +12,20 @@
     <div class="row">
       <div class="col-md-12">
         <h1>Staff List</h1>
+       
+      </div>
+      <div class="col-md-12">
+        {% if update_success %}
+        <p id="success-message" class='card bg-success font-weight-bold text-white'>
+           Staff Updated Successfully!
+       </p>
+       <script>
+         setTimeout(function() {
+           var element = document.getElementById('success-message');
+           element.style.display = 'none';
+         }, 3000);
+       </script>
+     {% endif %}  
       </div>
       <div class="col-md-12">
         <table class="d-flex justify-content-center align-items-center mt-5 table table-bordered table-responsive table-striped">
